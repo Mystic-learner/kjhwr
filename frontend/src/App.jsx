@@ -56,7 +56,7 @@ export default function App() {
     m && m.n > 0
       ? `With decisions made by ${String(cutoff).padStart(2, "0")}:00 UTC the day before, the wind forecast ` +
         `${m.bias >= 0 ? "over-predicted" : "under-predicted"} actual generation by about ` +
-        `${fmt(Math.abs(m.bias))} MW (${Math.abs(pct)}%) on average, and was off by ${fmt(m.mae)} MW in a typical half-hour.`
+        `${fmt(Math.abs(m.bias))} MW (${Math.abs(pct)}%) on average, and was off by ${fmt(m.mae)} MW in a typical hour.`
       : "";
 
   return (
@@ -82,7 +82,7 @@ export default function App() {
         <>
           <p className="headline">{headline}</p>
           <section className="cards">
-            <Card label="Mean absolute error" value={fmt(m.mae)} unit="MW" hint="Typical miss per half-hour" />
+            <Card label="Mean absolute error" value={fmt(m.mae)} unit="MW" hint="Typical miss per hour" />
             <Card label="RMSE" value={fmt(m.rmse)} unit="MW" hint="Penalises large misses" />
             <Card label="Bias" value={(m.bias >= 0 ? "+" : "") + fmt(m.bias)} unit="MW" hint="+ means forecast too high" />
             <Card label="MAPE" value={m.mape} unit="%" hint="Average % error" />
